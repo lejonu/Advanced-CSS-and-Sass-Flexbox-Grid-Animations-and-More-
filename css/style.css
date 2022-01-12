@@ -145,7 +145,26 @@ body {
   }
 }
 
+@keyframes moveInButton {
+  0% {
+    /* invisível no início */
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  80% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    /* visível no fim */
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
 /* link pseudo classe */
+.btn,
 .btn:link,
 .btn:visited {
   text-transform: uppercase;
@@ -154,6 +173,9 @@ body {
   display: inline-block;
   border-radius: 100px;
   transition: all 0.2s;
+  position: relative;
+  border: none;
+  cursor: pointer;
 }
 
 /* hover pseudo classe - quando passa o mouse sobre o botão  */
@@ -171,7 +193,36 @@ body {
 }
 
 .btn-white {
-  display: inline-block;
   background-color: #fff;
   color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  /* increase element size  */
+  /* z-index: 999; */
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInButton 1.5s ease-out 0.75s;
+  /* apply styles before animation starts  */
+  animation-fill-mode: backwards;
 }
