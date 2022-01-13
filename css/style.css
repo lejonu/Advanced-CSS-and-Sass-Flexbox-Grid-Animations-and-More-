@@ -1,97 +1,4 @@
 @charset "UTF-8";
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-/* Basic Reset */
-/* Universal selector '*' */
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
-
-html {
-  /* default 16px o user config */
-  font-size: 62.5%; }
-
-body {
-  /* properties in body tag are usually inherited */
-  /* Font available on google fonts */
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.7;
-  color: #777;
-  /* padding is not inherited by other elements */
-  padding: 3rem;
-  /* borders and padding are no longer added to the size of box */
-  box-sizing: border-box; }
-
-.header {
-  /* 95% of the view port height */
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.7), rgba(40, 180, 133, 0.7)), url("../img/hero.jpg");
-  block-size: cover;
-  /* keep at top by resing page */
-  background-position: top;
-  position: relative;
-  /* cut header image and background - more clips on https://bennettfeely.com/clippy/*/
-  /* 75vh makes it shrink with the page  */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  /* Center box  */
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* tirar o movimento pra cima da animação  */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-
-.heading-primary--main {
-  /* diplay block faz o objeto ocupar uma linha */
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-in;
-  /* atrasa a animação */
-  /* animation-delay: 3s; */
-  /* repete a animação  */
-  /* animation-iteration-count: 3; */ }
-
-.heading-primary--sub {
-  /* animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; */
-  animation: moveInRight 1s ease-out;
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.74rem; }
-
 @keyframes moveInLeft {
   0% {
     /* invisível no início */
@@ -128,58 +35,132 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-/* link pseudo classe */
-.btn,
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
+/* Basic Reset */
+/* Universal selector '*' */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+body {
+  /* properties in body tag are usually inherited */
+  /* borders and padding are no longer added to the size of box */
+  box-sizing: border-box; }
+
+html {
+  /* default 16px o user config */
+  font-size: 62.5%; }
+
+body {
+  /* Font available on google fonts */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  /* padding is not inherited by other elements */
+  padding: 3rem; }
+
+.header {
+  /* 95% of the view port height */
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.7), rgba(40, 180, 133, 0.7)), url("../img/hero.jpg");
+  block-size: cover;
+  /* keep at top by resing page */
+  background-position: top;
   position: relative;
-  border: none;
-  cursor: pointer;
-  font-size: 1.6rem; }
+  /* cut header image and background - more clips on https://bennettfeely.com/clippy/*/
+  /* 75vh makes it shrink with the page  */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    /* Center box  */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
-/* hover pseudo classe - quando passa o mouse sobre o botão  */
-.btn:hover {
-  transform: translateY(-0.3rem);
-  /* x direction 0 || 1rem down || blur 2rem || color */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+.btn {
+  /* hover pseudo classe - quando passa o mouse sobre o botão  */
+  /* active pseudo classe - quando clica no botão  */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /* x direction 0 || 1rem down || blur 2rem || color */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      /* increase element size  */
+      /* z-index: 999; */
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--animated {
+    animation: moveInButton 1.5s ease-out 0.75s;
+    /* apply styles before animation starts  */
+    animation-fill-mode: backwards; }
 
-/* active pseudo classe - quando clica no botão  */
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  /* increase element size  */
-  /* z-index: 999; */
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  animation: moveInButton 1.5s ease-out 0.75s;
-  /* apply styles before animation starts  */
-  animation-fill-mode: backwards; }
+/* link pseudo classe */
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* tirar o movimento pra cima da animação  */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    /* diplay block faz o objeto ocupar uma linha */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    /* atrasa a animação */
+    /* animation-delay: 3s; */
+    /* repete a animação  */
+    /* animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    /* animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; */
+    animation: moveInRight 1s ease-out;
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem; }

@@ -1,0 +1,16 @@
+/* Basic Reset */
+/* Universal selector '*' */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  /* properties in body tag are usually inherited */
+
+  /* borders and padding are no longer added to the size of box */
+  box-sizing: border-box;
+}
