@@ -11,8 +11,11 @@
   position: relative;
 
   @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+
     height: 95vh;
   }
 
